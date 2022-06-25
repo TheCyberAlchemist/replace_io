@@ -1,7 +1,8 @@
 import './style.css'
 import './fas.css'
-import { invoke } from '@tauri-apps/api'
-import { emit } from '@tauri-apps/api/event'
+import {readDataFile,delete_pattern} from "./read_write"
+// import { invoke } from '@tauri-apps/api'
+// import { emit } from '@tauri-apps/api/event'
 
 // const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -28,9 +29,14 @@ import { emit } from '@tauri-apps/api/event'
 
 // invoke('start_pattern_matching').then((response) => console.log(response));
 
-invoke('get_all_pattern').then(response=> add_tr(response));
-
-function add_tr(response:any){
+// invoke('get_all_pattern').then(response=> add_tr(response));
+async function main(){
+  const response = await readDataFile();
+  console.log(response);
+  add_tr(response);
+}
+main();
+function add_tr(response:Array<object>){
   // console.log(response)
   let a: any = response;
   const my_body = document.querySelector<HTMLTableSectionElement>('#my_body')!
@@ -52,9 +58,14 @@ function add_tr(response:any){
   for (let i = 0; i < delete_buttons.length; i++) {
 
     delete_buttons[i].addEventListener('click', (e:any) => {
-        const id = e.target.dataset.id;
-      invoke('delete_pattern', {deleteId: parseInt(id)})
-        .then(() => invoke('get_all_pattern').then(response=> add_tr(response)))
+      const id = e.target.dataset.id;
+      console.log(id);
+      delete_pattern(id).then(response => {
+        console.log(response);
+        add_tr(response);
+      })
+      // invoke('delete_pattern', {deleteId: parseInt(id)})
+      //   .then(() => invoke('get_all_pattern').then(response=> add_tr(response)))
     })
   }
 }
@@ -64,17 +75,3 @@ function add_tr(response:any){
 //     invoke('delete_pattern', {deleteId: parseInt(id)})
 //       .then((response) => console.log(response))
 // }
-
-const sendButton = document.querySelector('#asd')
-if (sendButton) {
-  sendButton.addEventListener('click', asd)
-  function asd(){
-    invoke('my_custom_command')
-      // `invoke` returns a Promise
-      .then((response) => console.log(response))
-    emit('click', {
-      theMessage: 'click here'
-    })
-    console.log("asd")
-  }
-}

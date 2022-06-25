@@ -11,13 +11,20 @@
     "version": "0.1.0"
   },
   "tauri": {
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    },
     "allowlist": {
       "fs":{
         "all": true,
-        "scope": ["$APP/*"]
+        "scope": ["$APP/*","$DESKTOP/*"]
       },
       "path":{
         "all": true
+      },
+      "window": {
+        "create":true 
       }
     },
     "bundle": {
@@ -44,7 +51,7 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": ["./asd.json"],
+      "resources": [],
       "shortDescription": "",
       "targets": "all",
       "windows": {
@@ -68,5 +75,6 @@
         "width": 800
       }
     ]
+    
   }
 }

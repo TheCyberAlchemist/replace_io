@@ -1,6 +1,7 @@
 use rdev::{Event, EventType,Key,simulate,SimulateError};
 use std::{thread,time};
 use super::read_write;
+// use tauri::api::file;
 static mut MY_STR: String = String::new();
 trait KeyTraits{
 	fn from_c(c: char) -> Result<(rdev::Key,bool), ()>;
@@ -82,6 +83,7 @@ fn send(event_type: &EventType) {
     // Let ths OS catchup (at least MacOS)
     thread::sleep(delay);
 }
+
 fn replace_string(my_pattern_struct: read_write::PatternStruct){
 	/*
 		simulates backspace event for my_pattern.len + 1 times to remove the pattern
@@ -119,13 +121,22 @@ fn replace_string(my_pattern_struct: read_write::PatternStruct){
 	add_replacement();
 }
 
+use tauri::api::path::config_dir;
+
+// use tauri::Config;
 fn check_patterns(my_string: &String)->bool{
 	/* 
 		function that checks the word string with the stored patterns
 		if a pattern is found then it calls the replace string on the pattern and returns true
 		else returns false
 	*/
-	let pattern_arr =  read_write::read_struct("./asd.json".to_owned());
+	
+	let app_dir = config_dir().map(|dir| dir.join("tauri_4")).unwrap();
+	let my_file = app_dir.join("data.json");
+
+	// println!("{:?}",read_write::read_struct();
+	let my_data_file =  my_file.to_str().unwrap().to_string();
+	let pattern_arr =  read_write::read_struct(my_data_file);
 	for i in pattern_arr.into_iter(){
 		if *my_string.to_lowercase() == i.pattern{
 			// println!("Match found for {}.",i.pattern);
@@ -134,7 +145,9 @@ fn check_patterns(my_string: &String)->bool{
 		}
 	}
 	false
+
 }
+
 fn add_to_my_str(my_char: Option<String>){
 	/*
 		function to manupilate the word_string 

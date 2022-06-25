@@ -1,41 +1,51 @@
 import './style.css'
 
-import { invoke } from '@tauri-apps/api'
-
+// import { invoke } from '@tauri-apps/api'
+import {append_file,readDataFile,Pattern} from "./read_write";
 
 // on form submit'
 const read_patterns = document.querySelector<HTMLFormElement>('#read_patterns')!
-// const app = document.querySelector<HTMLButtonElement>('#asd')!
 
-// // app.innerHTML = `
-// // 	<button class="w3-button w3-gray" onclick="asd()" id="asd">
-// // 	asd
-// // 	</button>
-// // `
-// app.addEventListener('click', () => {
-// 	window.location.href = window.location.origin;
-// })
-
+// import { appDir } from '@tauri-apps/api/path';
+// const appDirPath = await appDir();
+// console.log(BaseDirectory.App.toString);
+// const createDataFolder = async () => {
+// 	try {
+// 		await createDir("data", {
+// 			dir: BaseDirectory.App,
+// 			recursive: true,
+// 		});
+// 	} catch (e) {
+// 		console.error(e);
+// 	}
+// };
+function get_new_id(){
+	if (my_patterns.length == 0){
+		return 0;
+	}
+	return my_patterns[my_patterns.length-1].id + 1;
+}
+let my_patterns:Array<Pattern>;
+async function main(){
+	my_patterns = await readDataFile();
+	console.log(get_new_id())
+}
+main();
 read_patterns.addEventListener('submit', (e) => {
 	e.preventDefault()
-	// get the form data
-	// there are many ways to get this data using jQuery (you can use the class or id also)
-	let x: any= e; 
+	let x: any = e;
 	const formData = new FormData(x.target)
-	const form_data = {
-		id: 0,
-		pattern: formData.get('pattern'),
-		replacement: formData.get('replacement')
-	}
-	console.log(formData)
-	// const form_data = {id:0,pattern:"asd",replacement:"asd"}
-	invoke('add_pattern', {asd:form_data}).then(() => {
-		window.location.href = window.location.origin;
-	});
+	// const form_data = {
+	let id = get_new_id();
+	let pattern = formData.get('pattern')?.toString()
+	let replacement = formData.get('replacement')?.toString()
+	// }
+	// console.log(form_data);
+	append_file(new Pattern(id,pattern||"",replacement||""));
+	window.location.href = window.location.origin;
 })
 
 // invoke('get_all_pattern').then(response => {
-// 	console.log(response)
 // 	for (let i = 0; i < response.length; i++) {
 // 	  my_body.innerHTML += `
 // 		<tr>
