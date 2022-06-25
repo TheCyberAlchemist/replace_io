@@ -44,10 +44,10 @@ function add_tr(response:Array<object>){
   for (let i = 0; i < a.length; i++) {
     my_body.innerHTML += `
       <tr>
-        <td>${a[i].id}</td>
+        <td class="id_td">${a[i].id}</td>
         <td>${a[i].pattern}</td>
         <td>${a[i].replacement}</td>
-        <td><button class="delete_buttons" data-id="${a[i].id}">
+        <td class="delete_td"><button class="delete_buttons" data-id="${a[i].id}">
           <i class="fas fa-trash-alt"></i>
         </button></td>
       </tr>

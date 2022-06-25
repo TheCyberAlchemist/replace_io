@@ -7,8 +7,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "replace-inator",
-    "version": "0.1.0"
+    "productName": "replace.io",
+    "version": "0.9.0"
   },
   "tauri": {
     "systemTray": {
@@ -40,7 +40,8 @@
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
-        "icons/icon.ico"
+        "icons/icon.ico",
+        "icons/32x32.png"
       ],
       "identifier": "tauri_4",
       "longDescription": "",

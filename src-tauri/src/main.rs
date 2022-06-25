@@ -1,7 +1,7 @@
-// #![cfg_attr(
-//     all(not(debug_assertions), target_os = "windows"),
-//     windows_subsystem = "windows"
-// )]
+#![cfg_attr(
+    all(not(debug_assertions), target_os = "windows"),
+    windows_subsystem = "windows"
+)]
 use rdev::listen;
 mod callback;
 mod read_write;
@@ -90,7 +90,7 @@ fn main() {
                         app,
                         "new",
                         WindowUrl::App("index.html".into()),
-                    ).build();
+                    ).title("replace.io").build();
                 }else{
                     let _a = window.unwrap();
                     _a.show().unwrap();
@@ -116,6 +116,11 @@ fn main() {
         .expect("failed to run app");
         
     app.run(|_app_handle, event| match event {
+        tauri::RunEvent::Ready => {
+            // #[warn(unused_must_use)]
+            let _asd = _app_handle.get_window("main").unwrap().set_title("replace.io");
+
+        }
         tauri::RunEvent::ExitRequested { api, .. } => {
             println!("here at exit");
             api.prevent_exit();
