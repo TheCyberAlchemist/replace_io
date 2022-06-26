@@ -7,8 +7,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "replace.io",
-    "version": "0.9.0"
+    "productName": "replace_io",
+    "version": "0.9.1"
   },
   "tauri": {
     "systemTray": {
@@ -18,7 +18,7 @@
     "allowlist": {
       "fs":{
         "all": true,
-        "scope": ["$APP/*","$DESKTOP/*"]
+        "scope": ["$APP","$APP/*"]
       },
       "path":{
         "all": true
@@ -43,7 +43,7 @@
         "icons/icon.ico",
         "icons/32x32.png"
       ],
-      "identifier": "tauri_4",
+      "identifier": "replace_io",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -52,7 +52,6 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": [],
       "shortDescription": "",
       "targets": "all",
       "windows": {
@@ -65,14 +64,19 @@
       "csp": null
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": [
+          "https://gist.githubusercontent.com/TheCyberAlchemist/82a347406b2e955e02a05d155f7a3117/raw"
+      ],
+      "dialog": false,
+      "pubkey": "MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgHz0EnCb/UO7JhncPUI4K1NKXa7z6QqK89cAFMw12EFK10GzLX+i75QiOag8M0g4OTo/xPmaZY9dUXxi5P7Tm6Pa4mi/hGHGQWx9mN7upKjGaDl92wmSWjnuksCnwvGvWoMqKzzP05MG7L9sNvLyIq9/dJDvkaFv728WuHFEv6XNAgMBAAE="
     },
     "windows": [
       {
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "tauri_4",
+        "title": "replace_io",
         "width": 800
       }
     ]

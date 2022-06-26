@@ -7,6 +7,17 @@
   margin-top: 60px;
   
 }
+ul {
+  list-style: none !important;
+}
+ul li::before{
+  content: "•";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  color:#ff4774 !important;
+}
 html{
   color: rgb(255, 255, 255) !important;
   font-family: 'Metropolis-Regular' !important;
@@ -20,7 +31,7 @@ html{
   background-color: #0b0e0f !important;
   font-size: 17px !important;
   font-weight: 400 !important;
-  color:rgb(255, 71, 116) !important;
+  color:#ff4774 !important;
 }
 .w3-bar .w3-button {
   padding: 16px;

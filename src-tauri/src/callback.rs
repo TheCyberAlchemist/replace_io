@@ -131,7 +131,7 @@ fn check_patterns(my_string: &String)->bool{
 		else returns false
 	*/
 	
-	let app_dir = config_dir().map(|dir| dir.join("tauri_4")).unwrap();
+	let app_dir = config_dir().map(|dir| dir.join("replace_io")).unwrap();
 	let my_file = app_dir.join("data.json");
 
 	// println!("{:?}",read_write::read_struct();

@@ -1,7 +1,7 @@
 let my_patterns:Array<Pattern>;
 let DEBUG:boolean = false;
 
-import { readTextFile ,writeFile, BaseDirectory} from '@tauri-apps/api/fs';
+import { readTextFile ,writeFile, BaseDirectory,readDir,createDir} from '@tauri-apps/api/fs';
 
 export class Pattern {
   id: number;
@@ -12,6 +12,16 @@ export class Pattern {
 	this.pattern = pattern;
 	this.replacement = replacement;
   }
+}
+
+export const check_or_create_app_folder = async () => {
+	try {
+		console.log("Here in try");
+		await readDir('', { dir: BaseDirectory.App });
+	} catch (err) {
+		console.log("Here in catch");
+		await createDir('', { dir: BaseDirectory.App, recursive: true });
+	}
 }
 
 const createDataFile = async () => {
@@ -34,6 +44,7 @@ const createDataFile = async () => {
 		console.log(e);
 	}
 };
+
 export const readDataFile = async () => {
 	try {
 		let data;
@@ -47,8 +58,8 @@ export const readDataFile = async () => {
 	}
 	catch (e) {
 		console.log(e);
-		// createDataFolder();
-		createDataFile();
+		await check_or_create_app_folder();
+		await createDataFile();
 	}
 }
 
