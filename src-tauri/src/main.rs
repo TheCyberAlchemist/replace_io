@@ -118,8 +118,9 @@ fn main() {
     app.run(|_app_handle, event| match event {
         tauri::RunEvent::Ready => {
             // #[warn(unused_must_use)]
-            let _asd = _app_handle.get_window("main").unwrap().set_title("replace.io");
-
+            let window = _app_handle.get_window("main").unwrap();
+            let _ = window.set_title("replace.io");
+            let _ =window.set_focus();
         }
         tauri::RunEvent::ExitRequested { api, .. } => {
             println!("here at exit");

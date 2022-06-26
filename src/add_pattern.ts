@@ -31,20 +31,21 @@ async function main(){
 	console.log(get_new_id())
 }
 main();
-read_patterns.addEventListener('submit', (e) => {
-	e.preventDefault()
-	let x: any = e;
-	const formData = new FormData(x.target)
-	// const form_data = {
-	let id = get_new_id();
-	let pattern = formData.get('pattern')?.toString()
-	let replacement = formData.get('replacement')?.toString()
-	// }
-	// console.log(form_data);
-	append_file(new Pattern(id,pattern||"",replacement||""));
-	window.location.href = window.location.origin;
-})
-
+if (read_patterns){
+	read_patterns.addEventListener('submit', (e) => {
+		e.preventDefault()
+		let x: any = e;
+		const formData = new FormData(x.target)
+		// const form_data = {
+		let id = get_new_id();
+		let pattern = formData.get('pattern')?.toString()
+		let replacement = formData.get('replacement')?.toString()
+		// }
+		// console.log(form_data);
+		append_file(new Pattern(id,pattern||"",replacement||""));
+		window.location.href = window.location.origin;
+	})
+}
 // invoke('get_all_pattern').then(response => {
 // 	for (let i = 0; i < response.length; i++) {
 // 	  my_body.innerHTML += `

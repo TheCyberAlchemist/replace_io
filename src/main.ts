@@ -1,24 +1,9 @@
 import './style.css'
 import './fas.css'
 import {readDataFile,delete_pattern} from "./read_write"
+
 // import { invoke } from '@tauri-apps/api'
 // import { emit } from '@tauri-apps/api/event'
-
-// const app = document.querySelector<HTMLDivElement>('#app')!
-
-// app.innerHTML = `
-//   <h1>Hello Vite!</h1>
-//   <a href="./add_pattern" target="_blank">Documentation</a>
-//   <select id="route">
-//       <option value="add_pattern.html">add_pattern.html</option>
-//       <option value="nested/index.html">nested/index.html</option>
-//       <option value="nested/secondary.html">nested/secondary.html</option>
-//     </select>
-//     <button id="open-window">New window</button>
-//     <button id="go">Go</button>
-// `
-// const add_pattern = document.querySelector<HTMLButtonElement>('#add_pattern')!
-// const route = document.querySelector<HTMLSelectElement>('#route')!
 
 // add_pattern.addEventListener('click', () => {
 //   if (route.value != null){
@@ -29,7 +14,8 @@ import {readDataFile,delete_pattern} from "./read_write"
 
 // invoke('start_pattern_matching').then((response) => console.log(response));
 
-// invoke('get_all_pattern').then(response=> add_tr(response));
+// invoke('get_all_pattern').then(response=> add_tr(response));'
+
 async function main(){
   const response = await readDataFile();
   console.log(response);

@@ -1,6 +1,6 @@
 export {};
 const nav = document.querySelector<HTMLDivElement>('#nav_div')!
-
+const version_div = document.querySelector<HTMLDivElement>('.version_div')!
 nav.innerHTML += `
 <div class="w3-top">
 	<div class="w3-bar w3-black w3-card" id="myNavbar">
@@ -20,3 +20,7 @@ nav.innerHTML += `
 	</div>
 </div>
 `
+
+version_div.innerHTML = `
+	replace.io (v0.9.2)
+`;
