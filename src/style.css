@@ -58,7 +58,7 @@ table {
   width: 100%;
 }
 
-th {
+th,td {
   padding: 8px;
   /* text-align: left; */
   border-right: 2px solid rgb(255, 71, 116);

@@ -60,9 +60,6 @@ use tauri::{
     SystemTray, SystemTrayEvent, SystemTrayMenu, WindowBuilder, WindowUrl
 };
 fn main() {
-    thread::spawn(|| {
-        start_pattern_matching();
-    });
     let quit = CustomMenuItem::new("exit_app".to_string(), "Quit");
     // let hide = CustomMenuItem::new("hide".to_string(), "Hide");
     let tray_menu = SystemTrayMenu::new()
@@ -114,18 +111,25 @@ fn main() {
         })
         .build(tauri::generate_context!())
         .expect("failed to run app");
-        
+    // println!("is on {:?}",window.__TAURI__);
+     
+    thread::spawn(|| {
+        start_pattern_matching();
+    });
+    // let _a = App::window::__TAURI__;
+
     app.run(|_app_handle, event| match event {
         tauri::RunEvent::Ready => {
             // #[warn(unused_must_use)]
             let window = _app_handle.get_window("main").unwrap();
             let _ = window.set_title("replace.io");
             let _ =window.set_focus();
+            // app.exit(0);   
         }
         tauri::RunEvent::ExitRequested { api, .. } => {
             println!("here at exit");
             api.prevent_exit();
         }
         _ => {}
-      });
+    });
 }

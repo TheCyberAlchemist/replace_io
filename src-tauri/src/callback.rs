@@ -134,7 +134,7 @@ fn check_patterns(my_string: &String)->bool{
 	let app_dir = config_dir().map(|dir| dir.join("replace_io")).unwrap();
 	let my_file = app_dir.join("data.json");
 
-	// println!("{:?}",read_write::read_struct();
+	// println!("{:?}",my_string);
 	let my_data_file =  my_file.to_str().unwrap().to_string();
 	let pattern_arr =  read_write::read_struct(my_data_file);
 	for i in pattern_arr.into_iter(){
@@ -145,7 +145,6 @@ fn check_patterns(my_string: &String)->bool{
 		}
 	}
 	false
-
 }
 
 fn add_to_my_str(my_char: Option<String>){
@@ -161,13 +160,16 @@ fn add_to_my_str(my_char: Option<String>){
 		// println!("my_char = {:?}",my_char.as_ref());
 		let a = &"\\".to_string();
 		let temp: &str = my_char.as_ref().unwrap_or(a);
+		if temp == a{
+			return
+		}
 		let temp1 = temp.chars().nth(0).unwrap();
 		// println!("temp len = '{}'",temp.len());
 		// println!("{}",temp==" ");
-		if temp.len() != 1 || temp == "\\" || (!temp1.is_alphabetic() && !temp1.is_whitespace() && temp1 != '*'){
+		if temp.len() != 1 || (!temp1.is_alphabetic() && !temp1.is_whitespace() && temp1 != '*'){
 			// if we have not inputed characters
-			// if the inputed character is not alphabetic
-			// println!("here at break");
+			// println!("here at break. temp:: {:?}",temp);
+			// println!("asdf {:?}",my_char);
 			MY_STR = String::new();
 			return
 		}
@@ -175,14 +177,14 @@ fn add_to_my_str(my_char: Option<String>){
 		if temp.contains(char::is_whitespace){
 			// if white-space occures
 			// here we can check the last word for patterns...
+			// println!("here1");
 			check_patterns(&MY_STR);
 			MY_STR = String::new();
-			// println!("here1")
 			// return
 		}else{
 			// else we just push the letter
 			MY_STR.push(temp1);
-			// println!("here2")
+			// println!("{:?}",temp1);
 		}
 	}
 

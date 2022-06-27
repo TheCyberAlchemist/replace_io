@@ -24,8 +24,9 @@ if (check_update_button){
 		} else {
 			alert("Cancelled Update");
 		}
-	  }else{
-		console.log('No update available');
+	}else{
+		alert("No update available");
+		// console.log('');
 	  }
 	} catch (error) {
 	  console.log(error)
