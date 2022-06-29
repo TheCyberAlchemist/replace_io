@@ -12,13 +12,13 @@ This project is built unsing Tauri. And works as a text replacement app that can
 
 # ✨ Features
 
-- Enter your assigned patterns anywhere in your system to replace it with its assigned phase.
+- Enter your assigned patterns anywhere in your sys s tem to replace it with its assigned phase.
 - The app runs in the background without any clutter in the taskbar.
 - Add as many replacements as needed.
 - Fast and smooth UX.
 
 # 💁‍♂️ Usefull Tips
-- Click Add and add the pattern and the replacement phase.
+- Go to Add and add the pattern and the replacement phase.
 - The text replacement works anywhere in the system.
 - You cannot use Uppercase Letters in patterns.
 - You cannot use any special characters in the patterns except '*'.
@@ -27,10 +27,11 @@ This project is built unsing Tauri. And works as a text replacement app that can
 - The app is totally safe to use and is open source. Read more here.
 - Examples of some patterns :: ['nm','em','*a',"*addr"]
 
+❗The app keeps running after all the windows are closed. To stop the application go to hidden icons in the toolbar right-click on the app-icon and click "quit". 
+
 # 🗒️ Future Goals
 - Linux and MacOS native application.
 - Preventing multiple app instances. 
 
 # ⚓ Download links
 - Windows Download :- <a id="raw-url" href="https://github.com/TheCyberAlchemist/replace_io/releases/download/v0.9.3/replace_io_0.9.3_x64_en-US.msi.zip">Download FILE</a>
-
