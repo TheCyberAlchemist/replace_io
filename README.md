@@ -19,6 +19,7 @@ This project is built unsing Tauri. And works as a text replacement app that can
 
 # 💁‍♂️ Usefull Tips
 - Go to Add and add the pattern and the replacement phase.
+- You can ***update*** your current version to the latest. Go to ***Help > Update*** 
 - The text replacement works anywhere in the system.
 - You cannot use Uppercase Letters in patterns.
 - You cannot use any special characters in the patterns except '*'.
