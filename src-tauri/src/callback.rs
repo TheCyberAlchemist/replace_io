@@ -50,9 +50,11 @@ impl KeyTraits for Key{
 			'9' => Ok((rdev::Key::Num9,false)),
 			'0' => Ok((rdev::Key::Num0,false)),
 
-			'.' => Ok((rdev::Key::Dot,false)),
 			'-' => Ok((rdev::Key::Minus,false)),			
 			'=' => Ok((rdev::Key::Equal,false)),
+			
+			'`' => Ok((rdev::Key::BackQuote,false)),
+			'~' => Ok((rdev::Key::BackQuote,true)),
 
 			'!' => Ok((rdev::Key::Num1,false)),
 			'@' => Ok((rdev::Key::Num2,true)),
@@ -64,8 +66,31 @@ impl KeyTraits for Key{
 			'*' => Ok((rdev::Key::Num8,true)),
 			'(' => Ok((rdev::Key::Num9,true)),
 			')' => Ok((rdev::Key::Num0,true)),
-			'_' => Ok((rdev::Key::KpMinus,true)),
+			'_' => Ok((rdev::Key::Minus,true)),
 			'+' => Ok((rdev::Key::Equal,true)),
+			
+			'[' => Ok((rdev::Key::LeftBracket,false)),
+			']' => Ok((rdev::Key::RightBracket,false)),
+			'\\' => Ok((rdev::Key::BackSlash,false)),
+
+			'{' => Ok((rdev::Key::LeftBracket,true)),
+			'}' => Ok((rdev::Key::RightBracket,true)),
+			'|' => Ok((rdev::Key::BackSlash,true)),
+
+			';' => Ok((rdev::Key::SemiColon,false)),
+			'\'' => Ok((rdev::Key::Quote,false)),
+
+			':' => Ok((rdev::Key::SemiColon,true)),
+			'"' => Ok((rdev::Key::Quote,true)),
+
+			'.' => Ok((rdev::Key::Dot,false)),
+			',' => Ok((rdev::Key::Comma,false)),
+			'/' => Ok((rdev::Key::Slash,false)),
+			
+			'>' => Ok((rdev::Key::Dot,true)),
+			'<' => Ok((rdev::Key::Comma,true)),
+			'?' => Ok((rdev::Key::Slash,true)),
+
 
 			_ => Err(()),
 		}
